@@ -48,6 +48,6 @@ class UserService:
         if not user or not verify_password(password, user.hashed_password):
             return None
         return user
-
+    
 
 user_service = UserService()

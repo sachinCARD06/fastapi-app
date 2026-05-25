@@ -16,7 +16,6 @@ def login(
     db: Session = Depends(get_db),
 ):
     user = user_service.authenticate(db, email=form_data.username, password=form_data.password)
-    print("user--->", user)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
