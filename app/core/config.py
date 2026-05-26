@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     SECRET_KEY: str = "change-this-secret-key"
     ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30 # 60 * 24 = 1 day
 
     BACKEND_CORS_ORIGINS: list[str] = []
 
