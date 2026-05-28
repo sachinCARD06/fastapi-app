@@ -41,7 +41,7 @@ def list_users(
 
 @router.get("/{user_id}", response_model=UserResponse)
 def read_user(
-    user_id: int,
+    user_id: str,
     db: Session = Depends(get_db),
     _: User = Depends(get_current_superuser),
 ):
@@ -50,7 +50,7 @@ def read_user(
 
 @router.delete("/{user_id}", response_model=UserResponse)
 def delete_user(
-    user_id: int,
+    user_id: str,
     db: Session = Depends(get_db),
     _: User = Depends(get_current_superuser),
 ):

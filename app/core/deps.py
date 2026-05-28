@@ -24,7 +24,7 @@ def get_current_user(
         user_id: str = payload.get("sub")
         if user_id is None:
             raise credentials_exception
-        token_data = TokenData(user_id=int(user_id))
+        token_data = TokenData(user_id=user_id)
     except JWTError:
         raise credentials_exception
 

@@ -8,7 +8,7 @@ from app.schemas.user import UserCreate, UserUpdate
 
 
 class UserService:
-    def get_by_id(self, db: Session, user_id: int) -> User:
+    def get_by_id(self, db: Session, user_id: str) -> User:
         user = user_repository.get(db, user_id)
         if not user:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
@@ -37,7 +37,7 @@ class UserService:
             update_data["hashed_password"] = get_password_hash(update_data.pop("password"))
         return user_repository.update(db, db_obj=user, obj_in=update_data)
 
-    def delete(self, db: Session, user_id: int) -> User:
+    def delete(self, db: Session, user_id: str) -> User:
         user = user_repository.delete(db, id=user_id)
         if not user:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")

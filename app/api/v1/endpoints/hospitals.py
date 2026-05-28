@@ -41,7 +41,7 @@ def create_hospital(
 
 @router.get("/{hospital_id}", response_model=HospitalResponse)
 def get_hospital(
-    hospital_id: int,
+    hospital_id: str,
     db: Session = Depends(get_db),
     _: User = Depends(get_current_active_user),
 ):
@@ -50,7 +50,7 @@ def get_hospital(
 
 @router.patch("/{hospital_id}", response_model=HospitalResponse)
 def update_hospital(
-    hospital_id: int,
+    hospital_id: str,
     hospital_in: HospitalUpdate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_superuser),
@@ -60,7 +60,7 @@ def update_hospital(
 
 @router.delete("/{hospital_id}", response_model=HospitalResponse)
 def delete_hospital(
-    hospital_id: int,
+    hospital_id: str,
     db: Session = Depends(get_db),
     _: User = Depends(get_current_superuser),
 ):

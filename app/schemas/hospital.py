@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class UserBrief(BaseModel):
-    id: int
+    id: str
     email: str
     full_name: str | None = None
 
@@ -29,10 +29,10 @@ class HospitalUpdate(BaseModel):
 
 
 class HospitalResponse(HospitalBase):
-    id: int
+    id: str
     is_active: bool
-    created_by: int | None
-    updated_by: int | None
+    created_by: str | None
+    updated_by: str | None
     creator: UserBrief | None
     updater: UserBrief | None
 

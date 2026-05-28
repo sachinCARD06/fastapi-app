@@ -11,7 +11,7 @@ class BaseRepository(Generic[ModelType]):
     def __init__(self, model: type[ModelType]):
         self.model = model
 
-    def get(self, db: Session, id: int) -> ModelType | None:
+    def get(self, db: Session, id: str) -> ModelType | None:
         return db.get(self.model, id)
 
     def get_multi(self, db: Session, *, skip: int = 0, limit: int = 100) -> list[ModelType]:
@@ -31,7 +31,7 @@ class BaseRepository(Generic[ModelType]):
         db.refresh(db_obj)
         return db_obj
 
-    def delete(self, db: Session, *, id: int) -> ModelType | None:
+    def delete(self, db: Session, *, id: str) -> ModelType | None:
         obj = db.get(self.model, id)
         if obj:
             db.delete(obj)
